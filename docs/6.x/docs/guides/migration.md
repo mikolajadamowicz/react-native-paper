@@ -138,6 +138,13 @@ Dividers are decorative, so screen readers skip them and they stay out of the fo
 + <Divider accessible aria-hidden={false} role="separator" />
 ```
 
+This also affects tests: `aria-hidden` excludes the divider from `getByTestId` and similar queries by default. Pass `{ includeHiddenElements: true }` to the query, or opt the divider into the accessibility tree as shown above.
+
+```diff
+- getByTestId('divider')
++ getByTestId('divider', { includeHiddenElements: true })
+```
+
 ### Appbar
 
 The `style` props for `Appbar` and `Appbar.Header` no longer accept `Animated.Value` or `Animated.AnimatedInterpolation`. They only accept static styles.
