@@ -1,13 +1,14 @@
+import type * as React from 'react';
 import { StyleSheet, View } from 'react-native';
-import type { StyleProp, ViewStyle } from 'react-native';
+import type { StyleProp, ViewProps, ViewStyle } from 'react-native';
 
 import { useInternalTheme } from '../core/theming';
-import type { $RemoveChildren, ThemeProp } from '../types';
+import type { ThemeProp } from '../theme/types';
 
 const THICKNESS = 1;
 const INSET = 16;
 
-export type Props = $RemoveChildren<typeof View> & {
+export type Props = Omit<React.PropsWithoutRef<ViewProps>, 'children'> & {
   /**
    * Orientation of the divider. A vertical divider stretches to the height of
    * its parent, so the parent has to lay its children out in a row.
